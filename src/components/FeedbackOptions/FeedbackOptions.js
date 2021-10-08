@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './FeedbackOptions.module.css';
 
 class FeedbackOptions extends Component {
   render() {
+    const { options, onLeaveFeedback } = this.props;
     return (
-      <ul>
-        {this.props.options.map(option => (
-          <li key={option}>
+      <ul className={`list ${s.feedback}`}>
+        {options.map(option => (
+          <li className={s.item} key={option}>
             <button
+              className={s.button}
               type="button"
               value={option}
-              onClick={() => this.props.onLeaveFeedback(option)}
+              onClick={() => onLeaveFeedback(option)}
             >
               {option}
             </button>
@@ -22,6 +25,7 @@ class FeedbackOptions extends Component {
 }
 
 FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOf(['good', 'neutral', 'bad'])),
 };
 

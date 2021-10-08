@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Container from '../Container';
 
 class Section extends Component {
   render() {
+    const { title, children } = this.props;
     return (
       <div>
-        <h1>{this.props.title}</h1>
-        {this.props.children}
+        <Container>
+          <h1>{title}</h1>
+          {children}
+        </Container>
       </div>
     );
   }
